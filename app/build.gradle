@@ -17,7 +17,13 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ''
+                cppFlags.addAll(['-I' + file('src/main/cpp/nativeCode/modelAssimp'),
+                                 '-I' + file('src/main/cpp/nativeCode/common'),
+                                 '-I' + file('src/main/cpp/glm-0.9.7.5')])
             }
+        }
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
     }
 
@@ -40,9 +46,9 @@ android {
             version '3.18.1'
         }
     }
-    buildFeatures {
-        viewBinding true
-    }
+//    buildFeatures {
+//        viewBinding true
+//    }
 }
 
 dependencies {
